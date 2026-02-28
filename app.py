@@ -59,7 +59,7 @@ def fig1(brand):
     # filter dataframe by selected brand
     dff = filter_df(brand=brand)
     fig = px.line(dff.groupby('Sale_Month', as_index=False)['Revenue_USD'].sum(),
-                  x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}')
+                  x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}', markers=True)
     return fig
 
 @callback(Output('graph2', 'figure'), Input('country-dd', 'value'))
