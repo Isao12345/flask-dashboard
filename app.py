@@ -14,7 +14,7 @@ app = Dash(__name__)
 # minimal layout with two selectors and three graphs
 # selectors live in a centered div
 app.layout = html.Div([
-    html.H2('Sales Dashboard - Minimal', style={'textAlign': 'center'}),
+    html.H2('Sales Dashboard — Minimal Version', style={'textAlign': 'center'}),
     html.Div([
         html.Label('Brand:'),
         dcc.Dropdown(
