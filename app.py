@@ -9,6 +9,16 @@ DATA_PATH = 'synthetic_mobile_sales_2025.csv'
 # read into pandas DataFrame for later filtering
 df = pd.read_csv(DATA_PATH)
 
+# helper for filtering by brand/country
+
+def filter_df(brand=None, country=None):
+    d = df
+    if brand is not None:
+        d = d[d['Brand'] == brand]
+    if country is not None:
+        d = d[d['Country'] == country]
+    return d
+
 app = Dash(__name__)
 
 # minimal layout with two selectors and three graphs
@@ -41,7 +51,7 @@ app.layout = html.Div([
 @callback(Output('graph1', 'figure'), Input('brand-dd', 'value'))
 def fig1(brand):
     # filter dataframe by selected brand
-    dff = df[df['Brand'] == brand]
+    dff = filter_df(brand=brand)
     fig = px.line(dff.groupby('Sale_Month', as_index=False)['Revenue_USD'].sum(),
                   x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}')
     return fig
@@ -49,7 +59,7 @@ def fig1(brand):
 @callback(Output('graph2', 'figure'), Input('country-dd', 'value'))
 def fig2(country):
     # filter by chosen country
-    dff = df[df['Country'] == country]
+    dff = filter_df(country=country)
     fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
                  x='Brand', y='Units_Sold', title=f'Units in {country}')
     return fig
@@ -61,7 +71,7 @@ def fig2(country):
 )
 def fig3(brand, country):
     # scatter of price vs rating for selected brand/country
-    dff = df[(df['Brand'] == brand) & (df['Country'] == country)]
+    dff = filter_df(brand=brand, country=country)
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
                      title=f'Price vs Rating ({brand} in {country})')
     return fig
