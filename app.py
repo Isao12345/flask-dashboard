@@ -88,7 +88,8 @@ def fig3(brand, country):
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
                      color='Storage',
                      hover_data=['Model','Payment_Method'],
-                     title=f'Price vs Rating ({brand} in {country})')
+                     title=f'Price vs Rating ({brand} in {country})',
+                     template='plotly_dark')
     return fig
 
 if __name__ == '__main__':
