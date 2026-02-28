@@ -35,6 +35,7 @@ app.layout = html.Div([
             id='brand-dd',
             options=[{'label': b, 'value': b} for b in sorted(df['Brand'].unique())],
             value=sorted(df['Brand'].unique())[0],
+            placeholder='Select brand',
             clearable=False
         ),
         html.Label('Country:'),
@@ -42,6 +43,7 @@ app.layout = html.Div([
             id='country-dd',
             options=[{'label': c, 'value': c} for c in sorted(df['Country'].unique())],
             value=sorted(df['Country'].unique())[0],
+            placeholder='Select country',
             clearable=False
         )
     ], style={'width': '40%', 'margin': '20px auto'}),
