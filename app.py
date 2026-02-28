@@ -40,6 +40,7 @@ app.layout = html.Div([
 
 @callback(Output('graph1', 'figure'), Input('brand-dd', 'value'))
 def fig1(brand):
+    # filter dataframe by selected brand
     dff = df[df['Brand'] == brand]
     fig = px.line(dff.groupby('Sale_Month', as_index=False)['Revenue_USD'].sum(),
                   x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}')
