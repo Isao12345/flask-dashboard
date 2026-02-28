@@ -60,6 +60,7 @@ def fig1(brand):
     dff = filter_df(brand=brand)
     fig = px.line(dff.groupby('Sale_Month', as_index=False)['Revenue_USD'].sum(),
                   x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}', markers=True)
+    fig.update_layout(xaxis_title='Month', yaxis_title='Revenue (USD)')
     return fig
 
 @callback(Output('graph2', 'figure'), Input('country-dd', 'value'))
@@ -68,6 +69,7 @@ def fig2(country):
     dff = filter_df(country=country)
     fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
                  x='Units_Sold', y='Brand', orientation='h', title=f'Units in {country}')
+    fig.update_layout(xaxis_title='Units', yaxis_title='Brand')
     return fig
 
 @callback(
