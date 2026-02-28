@@ -4,8 +4,9 @@ from dash import Dash, html, dcc, callback, Output, Input
 import pandas as pd
 import plotly.express as px
 
-# load local dataset
+# load local dataset (CSV contains all 2025 mobile sales records)
 DATA_PATH = 'synthetic_mobile_sales_2025.csv'
+# read into pandas DataFrame for later filtering
 df = pd.read_csv(DATA_PATH)
 
 app = Dash(__name__)
