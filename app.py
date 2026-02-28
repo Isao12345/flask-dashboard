@@ -60,6 +60,7 @@ def fig2(country):
     Input('country-dd', 'value')
 )
 def fig3(brand, country):
+    # scatter of price vs rating for selected brand/country
     dff = df[(df['Brand'] == brand) & (df['Country'] == country)]
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
                      title='Price vs Rating')
