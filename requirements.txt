@@ -1,0 +1,4 @@
+dash>=2.17.0
+pandas
+plotly
+# dash-bootstrap-components  # uncomment if using bootstrap
