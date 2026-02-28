@@ -1,5 +1,6 @@
 # simple Dash app demonstrating interactive mobile sales charts
 # minimal layout, three graphs, and early/oft commits as requested
+# this file has multiple small commits; message describes context
 from dash import Dash, html, dcc, callback, Output, Input
 import pandas as pd
 import plotly.express as px
