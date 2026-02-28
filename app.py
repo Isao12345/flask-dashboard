@@ -3,6 +3,7 @@
 from dash import Dash, html, dcc, callback, Output, Input
 import pandas as pd
 import plotly.express as px
+import logging
 
 # load local dataset (CSV contains all 2025 mobile sales records)
 DATA_PATH = 'synthetic_mobile_sales_2025.csv'
@@ -20,6 +21,9 @@ def filter_df(brand=None, country=None):
     return d
 
 app = Dash(__name__)
+
+logging.basicConfig(level=logging.INFO)
+logging.info('app initialized')
 
 # minimal layout with two selectors and three graphs
 # selectors live in a centered div
