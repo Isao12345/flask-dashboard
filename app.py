@@ -84,4 +84,7 @@ def fig3(brand, country):
     return fig
 
 if __name__ == '__main__':
+    # run the dash server
     app.run(debug=True)
+
+# commit early, commit often!
