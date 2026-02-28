@@ -84,6 +84,7 @@ def fig3(brand, country):
         # nothing to show
         return px.scatter(title='No data for selected combination')
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
+                     color='Storage',
                      title=f'Price vs Rating ({brand} in {country})')
     return fig
 
