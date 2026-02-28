@@ -72,6 +72,9 @@ def fig2(country):
 def fig3(brand, country):
     # scatter of price vs rating for selected brand/country
     dff = filter_df(brand=brand, country=country)
+    if dff.empty:
+        # nothing to show
+        return px.scatter(title='No data for selected combination')
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
                      title=f'Price vs Rating ({brand} in {country})')
     return fig
