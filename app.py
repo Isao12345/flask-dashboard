@@ -20,10 +20,10 @@ def filter_df(brand=None, country=None):
         d = d[d['Country'] == country]
     return d
 
-app = Dash(__name__)
+app = Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1.0"}])
 
 logging.basicConfig(level=logging.INFO)
-logging.info('app initialized')
+logging.info('app initialized with meta tags')
 
 # minimal layout with two selectors and three graphs
 # selectors live in a centered div
