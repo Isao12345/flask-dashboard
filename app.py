@@ -48,6 +48,7 @@ def fig1(brand):
 
 @callback(Output('graph2', 'figure'), Input('country-dd', 'value'))
 def fig2(country):
+    # filter by chosen country
     dff = df[df['Country'] == country]
     fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
                  x='Brand', y='Units_Sold', title=f'Units in {country}')
