@@ -85,6 +85,7 @@ def fig3(brand, country):
         return px.scatter(title='No data for selected combination')
     fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
                      color='Storage',
+                     hover_data=['Model','Payment_Method'],
                      title=f'Price vs Rating ({brand} in {country})')
     return fig
 
