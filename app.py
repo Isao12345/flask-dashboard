@@ -69,7 +69,8 @@ def fig2(country):
     # filter by chosen country
     dff = filter_df(country=country)
     fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
-                 x='Units_Sold', y='Brand', orientation='h', title=f'Units in {country}')
+                 x='Units_Sold', y='Brand', orientation='h', title=f'Units in {country}',
+                 template='plotly_dark')
     fig.update_layout(xaxis_title='Units', yaxis_title='Brand')
     return fig
 
