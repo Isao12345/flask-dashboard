@@ -30,7 +30,7 @@ app.layout = html.Div([
             value=sorted(df['Country'].unique())[0],
             clearable=False
         )
-    ], style={'width': '40%', 'margin': 'auto'}),
+    ], style={'width': '40%', 'margin': '20px auto'}),
     html.Div([
         dcc.Graph(id='graph1'),
         dcc.Graph(id='graph2'),
