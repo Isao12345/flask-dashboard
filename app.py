@@ -59,7 +59,8 @@ def fig1(brand):
     # filter dataframe by selected brand
     dff = filter_df(brand=brand)
     fig = px.line(dff.groupby('Sale_Month', as_index=False)['Revenue_USD'].sum(),
-                  x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}', markers=True)
+                  x='Sale_Month', y='Revenue_USD', title=f'Revenue for {brand}', markers=True,
+                  template='plotly_dark')
     fig.update_layout(xaxis_title='Month', yaxis_title='Revenue (USD)')
     return fig
 
