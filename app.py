@@ -65,7 +65,7 @@ def fig2(country):
     # filter by chosen country
     dff = filter_df(country=country)
     fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
-                 x='Brand', y='Units_Sold', title=f'Units in {country}')
+                 x='Units_Sold', y='Brand', orientation='h', title=f'Units in {country}')
     return fig
 
 @callback(
