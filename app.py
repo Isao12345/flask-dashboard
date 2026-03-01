@@ -49,9 +49,9 @@ app.layout = html.Div([
         )
     ], style={'width': '40%', 'margin': '20px auto'}),
     html.Div([
-        dcc.Graph(id='graph1', style={'border':'1px solid #ccc','borderRadius': '12px','padding':'10px','margin':'10px'}),
-        dcc.Graph(id='graph2', style={'border':'1px solid #ccc','borderRadius': '12px','padding':'10px','margin':'10px'}),
-        dcc.Graph(id='graph3', style={'border':'1px solid #ccc','borderRadius': '12px','padding':'10px','margin':'10px'})
+        dcc.Graph(id='graph1', style={'border':'1px solid #56709e','borderRadius': '12px','padding':'10px','margin':'10px'}),
+        dcc.Graph(id='graph2', style={'border':'1px solid #56709e','borderRadius': '12px','padding':'10px','margin':'10px'}),
+        dcc.Graph(id='graph3', style={'border':'1px solid #56709e','borderRadius': '12px','padding':'10px','margin':'10px'})
     ])
 ])
 
@@ -67,12 +67,13 @@ def fig1(brand):
 
 @callback(Output('graph2', 'figure'), Input('country-dd', 'value'))
 def fig2(country):
-    # filter by chosen country
+    # show distribution of payment methods for the selected country
     dff = filter_df(country=country)
-    fig = px.bar(dff.groupby('Brand', as_index=False)['Units_Sold'].sum(),
-                 x='Units_Sold', y='Brand', orientation='h', title=f'Units in {country}',
-                 template='plotly_white')
-    fig.update_layout(xaxis_title='Units', yaxis_title='Brand')
+    title = f'Payment Method Breakdown in {country}'
+    if dff.empty:
+        return px.pie(names=[], values=[], title=title)
+    fig = px.pie(dff, names='Payment_Method', values='Units_Sold',
+                 title=title, template='plotly_white')
     return fig
 
 @callback(
