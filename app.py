@@ -82,17 +82,17 @@ def fig2(country):
     Input('country-dd', 'value')
 )
 def fig3(brand, country):
-    # scatter of price vs rating for selected brand/country
+    # scatter marker plot of units sold per model for selected brand/country
     logging.info(f'fig3 called with {brand}, {country}')
     dff = filter_df(brand=brand, country=country)
     if dff.empty:
-        # nothing to show
         return px.scatter(title='No data for selected combination')
-    fig = px.scatter(dff, x='Price_USD', y='Customer_Rating', size='Units_Sold',
-                     color='Storage',
-                     hover_data=['Model','Payment_Method'],
-                     title=f'Price vs Rating ({brand} in {country})',
+    summary = dff.groupby('Model', as_index=False)['Units_Sold'].sum()
+    fig = px.scatter(summary, x='Model', y='Units_Sold', size='Units_Sold',
+                     title=f'Units Sold by Model ({brand} in {country})',
                      template='plotly_white')
+    fig.update_traces(marker=dict(symbol='circle', sizemode='area'))
+    fig.update_layout(xaxis_title='Model', yaxis_title='Units Sold')
     return fig
 
 if __name__ == '__main__':
