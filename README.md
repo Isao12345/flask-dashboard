@@ -4,22 +4,24 @@
 
 ## การใช้งาน
 
-0. cd flask-dashboard
+1. พิมพ์คำสั่ง(ใน terminal)
 
-1. ติดตั้ง dependencies:
+   cd flask-dashboard
+
+3. ติดตั้ง dependencies:
    
    พิมพ์คำสั่ง(ใน terminal)
    
    pip install -r requirements.txt
    
-2. รันเซิร์ฟเวอร์:
+4. รันเซิร์ฟเวอร์:
    
    พิมพ์คำสั่ง(ใน terminal)
    
    python app.py
    
    
-3. เปิดเบราว์เซอร์ไปที่ `http://127.0.0.1:8050` เพื่อดูแดชบอร์ด
+5. เปิดเบราว์เซอร์ไปที่ `http://127.0.0.1:8050` เพื่อดูแดชบอร์ด
 
 ## ฟีเจอร์
 - กราฟรายเดือนและรายยี่ห้อ
